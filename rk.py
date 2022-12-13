@@ -16,28 +16,26 @@ def deriv(y, r1, r2, b1, b2):
     dFdt = -r2 * F + b2 * R * F
     return np.array([dRdt, dFdt])
 
-# Total population, N.
-N = 600
-# Initial number of rabbits and foxes, R0 and F0.
+# Initial number of preys and predators, R0 and F0.
 R0, F0 = 40, 9
-# Initialy there are a total population of 600 animals
-r1 = 0.1
-b1 = 0.02
-r2 = 0.3
-b2 = 0.01
+# Initialy there are a total population of 49 animals
+r1 = 0.1 # Instantaneous rate of increase of preys in the absence of predators
+b1 = 0.02 # Susceptibility of preys to being hunted
+r2 = 0.3 # Instantaneous rate of decline of predators in the case of absence of preys
+b2 = 0.01 # Ability of predators to predation
 
 # A grid of time points (in months)
 t = np.linspace(0, 200, 200)
 
 # Initial conditions vector
 y0 = np.array([R0, F0])
-# Integrate the SIR equations over the time grid, t.
+# Integrate the LV equations over the time grid, t.
 ret = np.array([y0])
 for i in range(len(t) - 1):
     ret = np.vstack((ret, rk4(deriv, ret[-1], t[i + 1] - t[i], r1, r2, b1, b2)))
 R, F = ret.T
 
-# Plot the data on three separate curves for S(t), I(t) and R(t)
+# Plot the data on three separate curves for R(t), and F(t)
 fig = plt.figure(facecolor='w')
 ax = fig.add_subplot(111, facecolor='#dddddd', axisbelow=True)
 ax.plot(t, R, 'b', alpha=0.5, lw=2, label='Presas')
