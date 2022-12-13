@@ -35,7 +35,7 @@ for i in range(len(t) - 1):
     ret = np.vstack((ret, rk4(deriv, ret[-1], t[i + 1] - t[i], r1, r2, b1, b2)))
 R, F = ret.T
 
-# Plot the data on three separate curves for R(t), and F(t)
+# Plot the data on two separate curves for R(t), and F(t)
 fig = plt.figure(facecolor='w')
 ax = fig.add_subplot(111, facecolor='#dddddd', axisbelow=True)
 ax.plot(t, R, 'b', alpha=0.5, lw=2, label='Presas')
