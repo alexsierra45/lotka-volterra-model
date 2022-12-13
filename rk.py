@@ -54,5 +54,4 @@ legend = ax.legend()
 legend.get_frame().set_alpha(0.5)
 for spine in ('top', 'right', 'bottom', 'left'):
     ax.spines[spine].set_visible(False)
-plt.savefig('lv_model')
 plt.show()
