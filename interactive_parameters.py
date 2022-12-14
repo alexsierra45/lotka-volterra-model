@@ -26,14 +26,17 @@ def f1(r1, r2, b1, b2, c=0.001):
     X, _ = integrate.odeint(dX_dt, X0, t, full_output=True)
     return X
 
+func = input()
+if func == 'f0' : func = f0
+else : func = f1
 fig, (ax1, ax2) = plt.subplots(ncols=2, figsize=(10, 4.8))
 controls = iplt.plot(
-    f1, ax=ax1, r1=(0.05, 0.2), b1=(0.01, 0.04), r2=(0.1, 0.5), b2=(0.005, 0.03), parametric=True
+    func, ax=ax1, r1=(0.05, 0.2), b1=(0.01, 0.04), r2=(0.1, 0.5), b2=(0.005, 0.03), parametric=True
 )
 ax1.set_xlabel("rabbits")
 ax1.set_ylabel("foxes")
 
-iplt.plot(f1, ax=ax2, controls=controls, label=["rabbits", "foxes"])
+iplt.plot(func, ax=ax2, controls=controls, label=["rabbits", "foxes"])
 ax2.set_xlabel("time")
 ax2.set_ylabel("population")
 _ = ax2.legend()
