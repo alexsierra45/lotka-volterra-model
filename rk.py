@@ -27,7 +27,7 @@ y0 = np.array([R0, F0])
 # Integrate the LV equations over the time grid, t.
 ret = np.array([y0])
 for i in range(len(t) - 1):
-    ret = np.vstack((ret, rk4(deriv_improved, ret[-1], t[i + 1] - t[i], 0, parameters)))
+    ret = np.vstack((ret, rk4(deriv, ret[-1], t[i + 1] - t[i], 0, parameters)))
 R, F = ret.T
 
 # Plot the data on two separate curves for R(t), and F(t)
@@ -47,5 +47,4 @@ legend = ax.legend()
 legend.get_frame().set_alpha(0.5)
 for spine in ('top', 'right', 'bottom', 'left'):
     ax.spines[spine].set_visible(False)
-plt.savefig('lv_improved_model')
 plt.show()
