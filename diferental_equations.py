@@ -6,7 +6,6 @@ def deriv_basic(y, a, parameters) :
     R, F = y
     dRdt = r1 * R
     dFdt = -r2 * F
-    dTdt = dRdt + dFdt
     return np.array([dRdt, dFdt])
 
 # LV model differential equations.
@@ -15,7 +14,6 @@ def deriv(y, a, parameters):
     R, F = y
     dRdt = r1 * R - b1 * R * F
     dFdt = -r2 * F + b2 * R * F
-    dTdt = dRdt + dFdt
     return np.array([dRdt, dFdt])
 
 # LV improved model
